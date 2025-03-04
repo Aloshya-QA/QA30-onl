@@ -15,16 +15,14 @@ public class MyBMICalculator {
 
     public static int getHeight(){
         System.out.print("Please, enter your height in cm: ");
-        int height = inputData().nextInt();
 
-        return height;
+        return inputData().nextInt();
     }
 
     public static double getWeight() {
         System.out.print("Please, enter your weight in kg: ");
-        double weight = inputData().nextDouble();
 
-        return weight;
+        return inputData().nextDouble();
     }
 
     public static double convertToMeters(int height) {
