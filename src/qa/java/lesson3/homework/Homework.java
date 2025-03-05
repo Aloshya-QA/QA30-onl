@@ -7,6 +7,8 @@ public class Homework {
         startInputMonth();
         startMonthInput();
         getParityOfNum();
+        getWeather();
+        getRainbowColor();
     }
 
     public static int inputData() {
@@ -61,4 +63,45 @@ public class Homework {
         System.out.println("Number is even: " + inputNum);
 
     }
+
+//    4. Для введенного числа t (температура на улице) вывести
+//    Если t>–5, то вывести «Тепло».
+//    Если –5>= t > –20, то вывести «Нормально».
+//    Если –20>= t, то вывести «Холодно».
+
+    public static void getWeather() {
+        System.out.print("Input temperature: ");
+        int inputTemp = inputData();
+
+        if (inputTemp > -5) {
+
+            System.out.println("Weather is warm");
+
+        } else if (inputTemp > -20) {
+
+            System.out.println("Weather is fine");
+
+        } else System.out.println("Weather is cold");
+    }
+
+//    5. По введенному номеру определить цвет радуги
+//    (1 – красный, 4 – зеленый и т. д.).
+
+    public static void getRainbowColor() {
+        System.out.print("Input number of color: ");
+
+        switch (inputData()) {
+            case 1 -> System.out.println("Rainbow color is Red");
+            case 2 -> System.out.println("Rainbow color is Orange");
+            case 3 -> System.out.println("Rainbow color is Yellow");
+            case 4 -> System.out.println("Rainbow color is Green");
+            case 5 -> System.out.println("Rainbow color is Cyan");
+            case 6 -> System.out.println("Rainbow color is Blue");
+            case 7 -> System.out.println("Rainbow color is Purple");
+            default -> System.out.println("Rainbow color is missing");
+        }
+    }
+
+
+
 }
