@@ -56,7 +56,9 @@ public class Homework {
 //    остатка от деления - операция выглядит так: '% 2').
 
     public static void getParityOfNum() {
+        System.out.print("Input number: ");
+        boolean inputNum = (inputData() % 2) == 0;
+        System.out.println("Number is even: " + inputNum);
 
-        System.out.println("Number is: ");
     }
 }
