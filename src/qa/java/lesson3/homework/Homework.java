@@ -6,14 +6,15 @@ public class Homework {
     public static void main(String[] args) {
         startInputMonth();
         startMonthInput();
+        getParityOfNum();
     }
 
     public static int inputData() {
         return new Scanner(System.in).nextInt();
     }
 
-    // 1. Написать программу для вывода названия поры года по номеру месяца.
-    // При решении используйте оператор switch-case.
+//    1. Написать программу для вывода названия поры года по номеру месяца.
+//    При решении используйте оператор switch-case.
 
     public static void startInputMonth() {
         System.out.print("Input month number: ");
@@ -31,8 +32,8 @@ public class Homework {
         };
     }
 
-    // 2. Написать программу для вывода названия поры года по номеру месяца.
-    // При решении используйте оператор if-else-if.
+//    2. Написать программу для вывода названия поры года по номеру месяца.
+//    При решении используйте оператор if-else-if.
 
     public static void startMonthInput() {
         System.out.print("Input month number: ");
@@ -47,5 +48,15 @@ public class Homework {
             System.out.println("This month is Autumn");
         } else
             System.out.println("Month is wrong");
+    }
+
+//    3. Напишите программу, которая будет принимать на вход число и на
+//    выход будет выводить сообщение четное число или нет.
+//    Для определения четности числа используйте операцию получения
+//    остатка от деления - операция выглядит так: '% 2').
+
+    public static void getParityOfNum() {
+
+        System.out.println("Number is: ");
     }
 }
