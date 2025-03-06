@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Homework {
     public static void main(String[] args) {
-//        startInputMonth();
-//        startMonthInput();
-//        getParityOfNum();
-//        getWeather();
-//        getRainbowColor();
+        startInputMonth();
+        startMonthInput();
+        getParityOfNum();
+        getWeather();
+        getRainbowColor();
         numCounter();
     }
 
