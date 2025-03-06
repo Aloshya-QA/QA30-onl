@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Homework {
     public static void main(String[] args) {
-        startInputMonth();
-        startMonthInput();
-        getParityOfNum();
-        getWeather();
-        getRainbowColor();
+//        startInputMonth();
+//        startMonthInput();
+//        getParityOfNum();
+//        getWeather();
+//        getRainbowColor();
+        numCounter();
     }
 
     public static int inputData() {
@@ -102,6 +103,21 @@ public class Homework {
         }
     }
 
+//    1. При помощи цикла for вывести на экран нечетные числа от 1 до 99.
+//    При решении используйте операцию инкремента (++).
+
+    public static void numCounter() {
+
+        for (int i = 1; i < 100; i++) {
+
+            if (i < 99) {
+                System.out.print(i + ", ");
+                i += 1;
+            } else {
+                System.out.println(i + ".");
+            }
+        }
+    }
 
 
 }
