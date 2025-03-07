@@ -9,7 +9,11 @@ public class Homework {
         getParityOfNum();
         getWeather();
         getRainbowColor();
-        numCounter();
+        numOddOut();
+        numOut();
+        sumNum();
+        getStringOfNum();
+        getNumString();
     }
 
     public static int inputData() {
@@ -106,7 +110,7 @@ public class Homework {
 //    1. При помощи цикла for вывести на экран нечетные числа от 1 до 99.
 //    При решении используйте операцию инкремента (++).
 
-    public static void numCounter() {
+    public static void numOddOut() {
 
         for (int i = 1; i < 100; i++) {
 
@@ -117,6 +121,61 @@ public class Homework {
                 System.out.println(i + ".");
             }
         }
+    }
+
+//   2. Необходимо вывести на экран числа от 5 до 1.
+//   При решении используйте операцию декремента (--).
+
+    public static void numOut() {
+        for (int i = 5; i > 0; i--) {
+
+            if (i > 1) {
+                System.out.print(i + ", ");
+            } else {
+                System.out.println(i + ".");
+            }
+        }
+    }
+
+//    3. Напишите программу, где пользователь вводит любое целое
+//    положительное число. А программа суммирует все числа от 1 до
+//    введенного пользователем числа.
+//    Для ввода числа воспользуйтесь классом Scanner.
+
+    public static void sumNum() {
+
+        System.out.print("Input number: ");
+        int result = 0;
+        int num = inputData();
+        for (int i = num; i > 0; i--) {
+            result += i;
+        }
+
+        System.out.println("Sum of the numbers from 1 to " + num + ": " + result);
+    }
+
+//    4. Необходимо, чтоб программа выводила на экран вот такую
+//    последовательность: 7 14 21 28 35 42 49 56 63 70 77 84 91 98.
+//    В решении используйте цикл while.
+
+    public static void getStringOfNum() {
+
+        int result = 0;
+        while (result < 97) {
+            result += 7;
+            if (result < 92) {
+                System.out.print(result + " ");
+            } else {
+                System.out.println(result + ".");
+            }
+        }
+
+    }
+
+//    5. Вывести 10 первых чисел последовательности 0, -5,-10,-15..
+
+    public static void getNumString() {
+
     }
 
 
