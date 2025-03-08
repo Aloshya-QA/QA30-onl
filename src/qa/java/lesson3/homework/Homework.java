@@ -9,11 +9,13 @@ public class Homework {
         getParityOfNum();
         getWeather();
         getRainbowColor();
-        numOddOut();
-        numOut();
-        sumNum();
+        getOddNum();
+        getNum();
+        getSum();
         getStringOfNum();
         getNumString();
+        getSquare();
+        getFibonacci();
     }
 
     public static int inputData() {
@@ -110,7 +112,7 @@ public class Homework {
 //    1. При помощи цикла for вывести на экран нечетные числа от 1 до 99.
 //    При решении используйте операцию инкремента (++).
 
-    public static void numOddOut() {
+    public static void getOddNum() {
 
         for (int i = 1; i < 100; i++) {
 
@@ -126,7 +128,7 @@ public class Homework {
 //   2. Необходимо вывести на экран числа от 5 до 1.
 //   При решении используйте операцию декремента (--).
 
-    public static void numOut() {
+    public static void getNum() {
         for (int i = 5; i > 0; i--) {
 
             if (i > 1) {
@@ -142,9 +144,9 @@ public class Homework {
 //    введенного пользователем числа.
 //    Для ввода числа воспользуйтесь классом Scanner.
 
-    public static void sumNum() {
+    public static void getSum() {
 
-        System.out.print("Input number: ");
+        System.out.print("Enter the number: ");
         int result = 0;
         int num = inputData();
         for (int i = num; i > 0; i--) {
@@ -176,7 +178,56 @@ public class Homework {
 
     public static void getNumString() {
 
+        System.out.print("How many numbers you want to see: ");
+        int numOfCycle = inputData();
+
+        System.out.print("Enter the step: ");
+        int step = inputData();
+
+        int counter = 0;
+        int result = 0;
+
+        do {
+            if (counter < numOfCycle - 1) {
+                System.out.print(result + ", ");
+            } else {
+                System.out.println(result + ".");
+            }
+
+            result += step;
+            counter++;
+
+        }
+
+        while (counter < numOfCycle);
+
     }
 
+//    6. Составьте программу, выводящую на экран квадраты чисел от 10 до
+//    20 включительно.
+
+    public static void getSquare() {
+        for (int i = 10; i < 21; i++) {
+            System.out.print((int) Math.pow(i, 2) + " ");
+        }
+    }
+
+//    1. Выведите на экран первые 11 членов последовательности Фибоначчи.
+
+    public static void getFibonacci() {
+
+        int firstNum = 0;
+        int secondNum = 1;
+        int nextNum;
+
+        System.out.print("Fibonacci:");
+
+        for (int i = 0; i < 12; i++) {
+            System.out.print(" " + firstNum);
+            nextNum = firstNum + secondNum;
+            firstNum = secondNum;
+            secondNum = nextNum;
+        }
+    }
 
 }
