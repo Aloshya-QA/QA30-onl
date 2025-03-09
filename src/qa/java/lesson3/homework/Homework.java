@@ -16,9 +16,11 @@ public class Homework {
         getNumString();
         getSquare();
         getFibonacci();
+        getInvestment();
+        getMultiTable();
     }
 
-    public static int inputData() {
+    public static int getData() {
         return new Scanner(System.in).nextInt();
     }
 
@@ -26,8 +28,8 @@ public class Homework {
 //    При решении используйте оператор switch-case.
 
     public static void startInputMonth() {
-        System.out.print("Input month number: ");
-        System.out.print("This month is " + getMonth(inputData()) + "\n");
+        System.out.print("Enter month number: ");
+        System.out.print("This month is " + getMonth(getData()) + "\n");
     }
 
     public static String getMonth(int month) {
@@ -45,8 +47,8 @@ public class Homework {
 //    При решении используйте оператор if-else-if.
 
     public static void startMonthInput() {
-        System.out.print("Input month number: ");
-        int inputMonth = inputData();
+        System.out.print("Enter month number: ");
+        int inputMonth = getData();
         if ((inputMonth > 0 && inputMonth <= 2) || inputMonth == 12) {
             System.out.println("This month is Winter");
         } else if (inputMonth > 2 && inputMonth < 6) {
@@ -65,8 +67,8 @@ public class Homework {
 //    остатка от деления - операция выглядит так: '% 2').
 
     public static void getParityOfNum() {
-        System.out.print("Input number: ");
-        boolean inputNum = (inputData() % 2) == 0;
+        System.out.print("Enter number: ");
+        boolean inputNum = (getData() % 2) == 0;
         System.out.println("Number is even: " + inputNum);
 
     }
@@ -77,8 +79,8 @@ public class Homework {
 //    Если –20>= t, то вывести «Холодно».
 
     public static void getWeather() {
-        System.out.print("Input temperature: ");
-        int inputTemp = inputData();
+        System.out.print("Enter temperature: ");
+        int inputTemp = getData();
 
         if (inputTemp > -5) {
 
@@ -95,9 +97,9 @@ public class Homework {
 //    (1 – красный, 4 – зеленый и т. д.).
 
     public static void getRainbowColor() {
-        System.out.print("Input number of color: ");
+        System.out.print("Enter number of color: ");
 
-        switch (inputData()) {
+        switch (getData()) {
             case 1 -> System.out.println("Rainbow color is Red");
             case 2 -> System.out.println("Rainbow color is Orange");
             case 3 -> System.out.println("Rainbow color is Yellow");
@@ -114,6 +116,8 @@ public class Homework {
 
     public static void getOddNum() {
 
+        System.out.print("Odd numbers from 1 to 99: ");
+
         for (int i = 1; i < 100; i++) {
 
             if (i < 99) {
@@ -129,6 +133,9 @@ public class Homework {
 //   При решении используйте операцию декремента (--).
 
     public static void getNum() {
+
+        System.out.print("Numbers from 5 to 1: ");
+
         for (int i = 5; i > 0; i--) {
 
             if (i > 1) {
@@ -148,12 +155,12 @@ public class Homework {
 
         System.out.print("Enter the number: ");
         int result = 0;
-        int num = inputData();
+        int num = getData();
         for (int i = num; i > 0; i--) {
             result += i;
         }
 
-        System.out.println("Sum of the numbers from 1 to " + num + ": " + result);
+        System.out.println("The sum of the numbers from 1 to " + num + ": " + result);
     }
 
 //    4. Необходимо, чтоб программа выводила на экран вот такую
@@ -161,6 +168,8 @@ public class Homework {
 //    В решении используйте цикл while.
 
     public static void getStringOfNum() {
+
+        System.out.print("Sequence: ");
 
         int result = 0;
         while (result < 97) {
@@ -179,13 +188,15 @@ public class Homework {
     public static void getNumString() {
 
         System.out.print("How many numbers you want to see: ");
-        int numOfCycle = inputData();
+        int numOfCycle = getData();
 
         System.out.print("Enter the step: ");
-        int step = inputData();
+        int step = getData();
 
         int counter = 0;
         int result = 0;
+
+        System.out.print("Sequence: ");
 
         do {
             if (counter < numOfCycle - 1) {
@@ -207,9 +218,14 @@ public class Homework {
 //    20 включительно.
 
     public static void getSquare() {
+
+        System.out.print("Quares of numbers from 10 to 20 inclusive:");
+
         for (int i = 10; i < 21; i++) {
-            System.out.print((int) Math.pow(i, 2) + " ");
+            System.out.print(" " + (int) Math.pow(i, 2));
         }
+
+        System.out.println();
     }
 
 //    1. Выведите на экран первые 11 членов последовательности Фибоначчи.
@@ -227,6 +243,63 @@ public class Homework {
             nextNum = firstNum + secondNum;
             firstNum = secondNum;
             secondNum = nextNum;
+        }
+
+        System.out.println();
+    }
+
+//    2. За каждый месяц банк начисляет к сумме вклада 7% от суммы.
+//    Напишите программу, в которую пользователь вводит сумму вклада и
+//    количество месяцев. А банк вычисляет конечную сумму вклада с учетом
+//    начисления процентов за каждый месяц.
+//    Для вычисления суммы с учетом процентов используйте цикл for. Пусть
+//    сумма вклада будет представлять тип float.
+
+    public static void getInvestment() {
+
+        System.out.print("Deposit amount: ");
+        int deposit = getData();
+
+        System.out.print("Deposit term in months: ");
+        int month = getData();
+
+        System.out.print("Percent rate, % per month: ");
+        float percent = getData() / 100F;
+
+        float amount = 0;
+        if (month < 1 || deposit < 1 || (percent * 100) < 1) {
+            System.out.println("The data was entered incorrectly! Try again.");
+            getInvestment();
+        } else {
+            for (int i = month; i >= 0; i--) {
+                amount = deposit + (deposit * percent);
+            }
+            System.out.println("The amount at the end of the term: " + amount);
+        }
+
+    }
+
+//    3. Напишите программу, которая выводит на консоль таблицу
+//    умножения.
+
+    public static void getMultiTable() {
+
+        System.out.print("---------------------------------------MultiTable---------------------------------------");
+
+        for (int i = 1; i < 11; i++) {
+            System.out.println();
+            for (int j = 1; j < 11; j++) {
+                int result = i * j;
+                System.out.print(j + "x" + i + "=" + result + " ");
+                if (result < 10) {
+                    System.out.print("   ");
+                } else if (i == 10) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+
         }
     }
 
