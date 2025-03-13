@@ -1,35 +1,73 @@
 package qa.java.lesson4.homework;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Homework {
     public static void main(String[] args) {
-        getResultOfSearch(createRandomArray());
-        startRemove(createRandomArray());
+        getResultOfSearch(createArray());
+        startRemove(createArray());
 
     }
 
-    public static int[] createRandomArray() {
+    public static int rangeRandom() {
+
+        int start = 1;
+        int end = 15;
+
+        return new Random().nextInt((end - start) + 1) + start;
+    }
+
+
+    public static int[] getArray() {
 
         System.out.print("Enter array length: ");
         int length = new Scanner(System.in).nextInt();
         int[] arrNums = new int[length];
 
         for (int i = 0; i < arrNums.length; i++) {
-            arrNums[i] = (int) (Math.random() * 10);
+            arrNums[i] = rangeRandom();
         }
 
         displayArray(arrNums);
         return arrNums;
     }
 
+    public static int[] getRandomArray() {
+
+        int[] arrNums = new int[rangeRandom()];
+
+        for (int i = 0; i < arrNums.length; i++) {
+            arrNums[i] = rangeRandom();
+        }
+
+        displayArray(arrNums);
+        return arrNums;
+    }
+
+    public static int[] createArray() {
+        do {
+            System.out.print("Do you want enter length array? \n");
+            String answer = new Scanner(System.in).nextLine();
+
+            if (answer.equalsIgnoreCase("Y")) {
+                return getArray();
+            } else if (answer.equalsIgnoreCase("N")) {
+                return getRandomArray();
+            }
+        } while (true);
+
+    }
+
     public static void displayArray(int[] array) {
 
         System.out.print("Created array: ");
 
-        for (int i : array) {
-            System.out.print(i + " ");
-        }
+        if (array.length != 0) {
+            for (int i : array) {
+                System.out.print(i + " ");
+            }
+        } else System.out.print("Empty");
 
         System.out.println();
 
