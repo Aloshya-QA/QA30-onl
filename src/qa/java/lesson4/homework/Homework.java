@@ -5,15 +5,22 @@ import java.util.Scanner;
 
 public class Homework {
     public static void main(String[] args) {
-//        getResultOfSearch(createArray());
-//        startRemove(createArray());
-//        getMaxValue(createArray());
-//        getMinValue(createArray());
-//        getAvgValue(createArray());
-//        getBiggestAvgValue(createArray(), createArray());
-//        replaceOddIndexWithZero(createArray());
-//        createEvenArray(createArray()); fix range of array length
+        getResultOfSearch(createIntArray());
+        startRemove(createIntArray());
+        getMaxValue(createIntArray());
+        getMinValue(createIntArray());
+        getAvgValue(createIntArray());
+        getBiggestAvgValue(createIntArray(), createIntArray());
 
+        getEvenArray(createIntArray());
+        // Чтобы просило длинну массива от 5 до 10,
+        // нужно поменять условие (length > 0) в методе getIntArray
+        // Не менял, так как метод используется не только здесь :)
+        // Можно было бы написать новый,
+        // но он бы не сильно отличался от getIntArray
+
+        replaceOddIndexWithZero(createIntArray());
+        sortArray();
 
 
     }
@@ -26,8 +33,21 @@ public class Homework {
         return new Random().nextInt((end - start) + 1) + start;
     }
 
+    public static int[] createIntArray() {
 
-    public static int[] getArray() {
+        do {
+            System.out.print("Do you want enter length array?(Y/N) \n");
+            String answer = new Scanner(System.in).nextLine();
+
+            if (answer.equalsIgnoreCase("Y")) {
+                return getIntArray();
+            } else if (answer.equalsIgnoreCase("N")) {
+                return getRandomIntArray();
+            }
+        } while (true);
+    }
+
+    public static int[] getIntArray() {
 
         System.out.print("Enter array length: ");
 
@@ -41,22 +61,21 @@ public class Homework {
                     arrNums[i] = rangeRandom();
                 }
                 System.out.print("Created array: ");
-                displayArray(arrNums);
+                displayIntArray(arrNums);
                 return arrNums;
             } else {
 
                 System.out.println("Enter a number greater than 0");
-                return getArray();
+                return getIntArray();
             }
         } catch (Exception e) {
 
             System.out.println("Enter numbers only, try again.");
-            return getArray();
+            return getIntArray();
         }
-
     }
 
-    public static int[] getRandomArray() {
+    public static int[] getRandomIntArray() {
 
         int[] arrNums = new int[rangeRandom()];
 
@@ -65,26 +84,12 @@ public class Homework {
         }
 
         System.out.print("Created array: ");
-        displayArray(arrNums);
+        displayIntArray(arrNums);
         return arrNums;
     }
 
-    public static int[] createArray() {
 
-        do {
-            System.out.print("Do you want enter length array?(Y/N) \n");
-            String answer = new Scanner(System.in).nextLine();
-
-            if (answer.equalsIgnoreCase("Y")) {
-                return getArray();
-            } else if (answer.equalsIgnoreCase("N")) {
-                return getRandomArray();
-            }
-        } while (true);
-
-    }
-
-    public static void displayArray(int[] array) {
+    public static void displayIntArray(int[] array) {
 
         if (array.length != 0) {
             for (int i : array) {
@@ -93,7 +98,17 @@ public class Homework {
         } else System.out.print("Empty");
 
         System.out.println();
+    }
 
+    public static void displayStringArray(String[] array) {
+
+        if (array.length != 0) {
+            for (String i : array) {
+                System.out.print(i + " ");
+            }
+        } else System.out.print("Empty");
+
+        System.out.println();
     }
 
     public static int getCountOfNums(int value, int[] randomArray) {
@@ -160,8 +175,7 @@ public class Homework {
             }
         }
         System.out.print("New array: ");
-        displayArray(newArray);
-
+        displayIntArray(newArray);
     }
 
     public static int getMaxValue(int[] array) {
@@ -224,24 +238,22 @@ public class Homework {
             System.out.println("The average values of the first and second array is equal");
         } else if (firstAvg > secondAvg) {
             System.out.println("The average value of the first array is greater");
-        } else
+        } else {
             System.out.println("The average value of the second array is greater");
-
+        }
     }
 
     public static void replaceOddIndexWithZero(int[] oldArray) {
 
-        int[] array = oldArray;
-
-        for (int i = 1; i < array.length; i += 2) {
-            array[i] = 0;
+        for (int i = 1; i < oldArray.length; i += 2) {
+            oldArray[i] = 0;
         }
 
         System.out.print("Modified array: ");
-        displayArray(array);
+        displayIntArray(oldArray);
     }
 
-    public static void getEvenArray(int removeNums, int[] oldArray) {
+    public static void createEvenArray(int removeNums, int[] oldArray) {
 
         int newArrayLength = oldArray.length - removeNums;
         int[] newArray = new int[newArrayLength];
@@ -253,23 +265,76 @@ public class Homework {
                 i--;
             }
         }
-        System.out.print("New array without even nums: ");
-        displayArray(newArray);
 
+        System.out.print("New array without even nums: ");
+        displayIntArray(newArray);
     }
 
-    public static void createEvenArray(int[] randomArray) {
+    public static void getEvenArray(int[] randomArray) {
 
         int counter = getCountOfEven(randomArray);
 
         if (counter > 0) {
-            getEvenArray(counter, randomArray);
+            createEvenArray(counter, randomArray);
         } else {
             System.out.println("There are no even numbers in the array. Try again.");
-            createEvenArray(createArray());
+            getEvenArray(createIntArray());
         }
+    }
 
+    public static void sortArray() {
+
+
+        String[] array = createStringArray();
+
+        System.out.print("Created string array: ");
+        displayStringArray(array);
+
+        System.out.print("Sorted string array: ");
+        displayStringArray(bubbleSortStringArray(array));
+    }
+
+    public static String[] createStringArray() {
+
+        System.out.print("Enter the length of the string array: ");
+        int length = new Scanner(System.in).nextInt();
+
+        if (length > 0) {
+            String[] array = new String[length];
+
+            for (int i = 0; i < array.length; i++) {
+                System.out.print("Enter the value of the " + i + " element: ");
+                array[i] = new Scanner(System.in).nextLine();
+            }
+
+            return array;
+        } else {
+
+            System.out.println("Enter a number greater than 0");
+            return createStringArray();
+        }
     }
 
 
+    public static String[] bubbleSortStringArray(String[] array) {
+
+        String prevNum;
+        String nextNum;
+
+        for (int cycle = 0; cycle < array.length; cycle++) {
+            for (int prevIndex = 0, nextIndex = prevIndex + 1;
+                 nextIndex < array.length - cycle;
+                 prevIndex++, nextIndex++) {
+                if (array[prevIndex].toLowerCase().charAt(0) > array[nextIndex].toLowerCase().charAt(0)) {
+                    prevNum = array[prevIndex];
+                    nextNum = array[nextIndex];
+                    array[prevIndex] = nextNum;
+                    array[nextIndex] = prevNum;
+                }
+
+            }
+        }
+
+        return array;
+    }
 }
