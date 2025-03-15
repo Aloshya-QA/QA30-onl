@@ -1,5 +1,6 @@
 package qa.java.lesson4.homework;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,9 +21,8 @@ public class Homework {
         // но он бы не сильно отличался от getIntArray
 
         replaceOddIndexWithZero(createIntArray());
-        sortArray();
-
-
+        sortStringArray(createStringArray());
+        bubbleSortIntArray(createIntArray());
     }
 
     public static int rangeRandom() {
@@ -88,6 +88,32 @@ public class Homework {
         return arrNums;
     }
 
+    public static String[] createStringArray() {
+
+        System.out.print("Enter the length of the string array: ");
+        try {
+            int length = new Scanner(System.in).nextInt();
+
+            if (length > 0) {
+                String[] array = new String[length];
+
+                for (int i = 0; i < array.length; i++) {
+                    System.out.print("Enter the value of the " + i + " element: ");
+                    array[i] = new Scanner(System.in).nextLine();
+                }
+
+                return array;
+            } else {
+
+                System.out.println("Enter a number greater than 0");
+                return createStringArray();
+            }
+        } catch (Exception e) {
+
+            System.out.println("Enter numbers only, try again.");
+            return createStringArray();
+        }
+    }
 
     public static void displayIntArray(int[] array) {
 
@@ -178,7 +204,7 @@ public class Homework {
         displayIntArray(newArray);
     }
 
-    public static int getMaxValue(int[] array) {
+    public static void getMaxValue(int[] array) {
 
         int cache = array[0];
 
@@ -188,10 +214,9 @@ public class Homework {
             }
         }
         System.out.println("Max value of array: " + cache);
-        return cache;
     }
 
-    public static int getMinValue(int[] array) {
+    public static void getMinValue(int[] array) {
 
         int cache = array[0];
 
@@ -202,7 +227,6 @@ public class Homework {
         }
 
         System.out.println("Min value of array: " + cache);
-        return cache;
     }
 
     public static double getAvgValue(int[] array) {
@@ -282,50 +306,16 @@ public class Homework {
         }
     }
 
-    public static void sortArray() {
+    public static void bubbleSortIntArray(int[] array) {
 
-
-        String[] array = createStringArray();
-
-        System.out.print("Created string array: ");
-        displayStringArray(array);
-
-        System.out.print("Sorted string array: ");
-        displayStringArray(bubbleSortStringArray(array));
-    }
-
-    public static String[] createStringArray() {
-
-        System.out.print("Enter the length of the string array: ");
-        int length = new Scanner(System.in).nextInt();
-
-        if (length > 0) {
-            String[] array = new String[length];
-
-            for (int i = 0; i < array.length; i++) {
-                System.out.print("Enter the value of the " + i + " element: ");
-                array[i] = new Scanner(System.in).nextLine();
-            }
-
-            return array;
-        } else {
-
-            System.out.println("Enter a number greater than 0");
-            return createStringArray();
-        }
-    }
-
-
-    public static String[] bubbleSortStringArray(String[] array) {
-
-        String prevNum;
-        String nextNum;
+        int prevNum;
+        int nextNum;
 
         for (int cycle = 0; cycle < array.length; cycle++) {
             for (int prevIndex = 0, nextIndex = prevIndex + 1;
                  nextIndex < array.length - cycle;
                  prevIndex++, nextIndex++) {
-                if (array[prevIndex].toLowerCase().charAt(0) > array[nextIndex].toLowerCase().charAt(0)) {
+                if (array[prevIndex] > array[nextIndex]) {
                     prevNum = array[prevIndex];
                     nextNum = array[nextIndex];
                     array[prevIndex] = nextNum;
@@ -335,6 +325,16 @@ public class Homework {
             }
         }
 
-        return array;
+        System.out.print("Sorted int array: ");
+        displayIntArray(array);
+    }
+
+    public static void sortStringArray(String[] array) {
+
+        Arrays.sort(array);
+
+        System.out.print("Sorted string array: ");
+
+        displayStringArray(array);
     }
 }
