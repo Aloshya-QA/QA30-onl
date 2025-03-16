@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
 
-        increaseArrayValues(createIntArray());
+//        increaseArrayValues(createIntArray());
+        getChessBoard(8, 8);
 
     }
 
@@ -41,7 +42,7 @@ public class Homework {
 
                 for (int i = 0; i < array.length; i++) {
                     for (int j = 0; j < array[i].length; j++) {
-                        for (int k = 0; k < array[i].length; k++) {
+                        for (int k = 0; k < array[i][j].length; k++) {
                             array[i][j][k] = rangeRandom();
                         }
                     }
@@ -64,13 +65,12 @@ public class Homework {
 
     public static void displayIntArray(int[][][] array) {
 
-        for (int[][] ints : array) {
+        for (int i = 0; i < array.length; i++) {
             System.out.println();
-            for (int[] anInt : ints) {
+            for (int j = 0; j < array[i].length; j++) {
                 System.out.println();
-                for (int k = 0; k < ints.length; k++) {
-                    System.out.print(anInt[k] + " ");
-
+                for (int k = 0; k < array[i][j].length; k++) {
+                    System.out.print(array[i][j][k] + " ");
                 }
             }
         }
@@ -87,7 +87,7 @@ public class Homework {
 
                 for (int i = 0; i < array.length; i++) {
                     for (int j = 0; j < array[i].length; j++) {
-                        for (int k = 0; k < array[i].length; k++) {
+                        for (int k = 0; k < array[i][j].length; k++) {
                             array[i][j][k] += value;
                         }
                     }
@@ -109,4 +109,35 @@ public class Homework {
 
     }
 
+    public static void getChessBoard(int firstLength, int secondLength) {
+
+        String[][] array = new String[firstLength][secondLength];
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+
+                if (i % 2 == 0) {
+                    if (j % 2 == 0) {
+                        array[i][j] = "W";
+                    } else {
+                        array[i][j] = "B";
+                    }
+                } else {
+                    if (j % 2 != 0) {
+                        array[i][j] = "W";
+                    } else {
+                        array[i][j] = "B";
+                    }
+                }
+
+            }
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.println();
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+        }
+    }
 }
