@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
 
-//        increaseArrayValues(createIntArray());
+        increaseArrayValues(createIntArray());
         getChessBoard(8, 8);
 
     }
