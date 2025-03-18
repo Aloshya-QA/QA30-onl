@@ -6,8 +6,10 @@ import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
 
-        increaseArrayValues(createIntArray());
-        getChessBoard(8, 8);
+//        increaseArrayValues(createIntArray());
+//        getChessBoard(8, 8);
+//        getArraySum(3, 3);
+        getArrayDiagonal(7, 7);
 
     }
 
@@ -18,7 +20,7 @@ public class Homework {
     public static int rangeRandom() {
 
         int start = 1;
-        int end = 15;
+        int end = 9;
 
         return new Random().nextInt((end - start) + 1) + start;
     }
@@ -137,6 +139,70 @@ public class Homework {
             System.out.println();
             for (int j = 0; j < array[i].length; j++) {
                 System.out.print(array[i][j] + " ");
+            }
+        }
+    }
+
+    public static void getArraySum(int firstLength, int secondLength) {
+        int[][] array = new int[firstLength][secondLength];
+        int result = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = rangeRandom();
+            }
+        }
+
+        System.out.print("Created int array: ");
+
+        for (int[] ints : array) {
+            System.out.println();
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
+            }
+        }
+
+        System.out.println();
+
+        for (int[] ints : array) {
+            for (int anInt : ints) {
+                result += anInt;
+            }
+        }
+
+        System.out.print("Sum of array values: " + result);
+    }
+
+    public static void getArrayDiagonal(int firstLength, int secondLength) {
+        int[][] array = new int[firstLength][secondLength];
+        int result = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = rangeRandom();
+            }
+        }
+
+        System.out.print("Created int array: ");
+
+        for (int[] ints : array) {
+            System.out.println();
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
+            }
+        }
+
+        System.out.println();
+
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.println();
+            for (int j = 0; j < array[i].length; j++) {
+                if (i == j || j == ((array.length - 1) - i)) {
+                    System.out.print(array[i][j] + " ");
+                } else {
+                    System.out.print("* ");
+                }
             }
         }
     }
