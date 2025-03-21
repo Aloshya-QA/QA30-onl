@@ -23,7 +23,7 @@ public class Homework {
 
         getArraySum(createArray());
         getArrayDiagonal(createArray());
-
+        bubbleSortArray(createArray());
 
 
     }
@@ -339,5 +339,50 @@ public class Homework {
         }
 
         return newArray;
+    }
+
+    public static void bubbleSortArray(int[][] array) {
+
+        if (array.length == array[0].length) {
+
+            int prevNum;
+            int nextNum;
+
+            for (int i = 0; i < array.length; i++) {
+                for (int cycle = 0; cycle < array.length; cycle++) {
+                    for (int prevIndex = 0, nextIndex = prevIndex + 1;
+                         nextIndex < array.length - cycle;
+                         prevIndex++, nextIndex++) {
+                        if (array[i][prevIndex] > array[i][nextIndex]) {
+                            prevNum = array[i][prevIndex];
+                            nextNum = array[i][nextIndex];
+                            array[i][prevIndex] = nextNum;
+                            array[i][nextIndex] = prevNum;
+                        }
+                    }
+                }
+            }
+
+        } else {
+
+            int prevNum;
+            int nextNum;
+
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[0].length; j++) { // 1 - 6 6 3
+                    for (int k = 0, n = k + 1; n < array[0].length; k++, n++) { //3
+                        if (array[i][k] > array[i][n]) { // 6 > 6
+                            prevNum = array[i][k];
+                            nextNum = array[i][n];
+                            array[i][k] = nextNum;
+                            array[i][n] = prevNum;
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.print("Sorted int array: ");
+        displayArray(array);
     }
 }
