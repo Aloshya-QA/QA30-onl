@@ -8,8 +8,10 @@ public class Homework {
 
 //        increaseArrayValues(createIntArray());
 //        getChessBoard(8, 8);
-//        getArraySum(3, 3);
-        getArrayDiagonal(7, 7);
+//        getArraySum(createArray());
+//        getArrayDiagonal(createArray());
+        getMatrix(createArray(), createArray());
+
 
     }
 
@@ -65,6 +67,42 @@ public class Homework {
         }
     }
 
+    public static int[][] createArray() {
+
+        try {
+
+            System.out.print("Enter the length of the first dimension of the array: ");
+            int firstArraySize = input().nextInt();
+
+            System.out.print("Enter the length of the second dimension of the array: ");
+            int secondArraySize = input().nextInt();
+
+            if (firstArraySize > 0 && secondArraySize > 0) {
+
+                int[][] array = new int[firstArraySize][secondArraySize];
+
+                for (int i = 0; i < array.length; i++) {
+                    for (int j = 0; j < array[i].length; j++) {
+                        array[i][j] = rangeRandom();
+
+                    }
+                }
+
+                System.out.print("Created int array: ");
+                displayArray(array);
+                return array;
+            } else {
+
+                System.out.println("Length must be greater than zero, try again.");
+                return createArray();
+            }
+        } catch (Exception e) {
+
+            System.out.println("Enter numbers only, try again.");
+            return createArray();
+        }
+    }
+
     public static void displayIntArray(int[][][] array) {
 
         for (int i = 0; i < array.length; i++) {
@@ -74,6 +112,18 @@ public class Homework {
                 for (int k = 0; k < array[i][j].length; k++) {
                     System.out.print(array[i][j][k] + " ");
                 }
+            }
+        }
+        System.out.println();
+    }
+
+    public static void displayArray(int[][] array) {
+
+        for (int[] i : array) {
+            System.out.println();
+            for (int j : i) {
+                System.out.print(j + " ");
+
             }
         }
         System.out.println();
@@ -143,26 +193,9 @@ public class Homework {
         }
     }
 
-    public static void getArraySum(int firstLength, int secondLength) {
-        int[][] array = new int[firstLength][secondLength];
+    public static void getArraySum(int[][] array) {
+
         int result = 0;
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = rangeRandom();
-            }
-        }
-
-        System.out.print("Created int array: ");
-
-        for (int[] ints : array) {
-            System.out.println();
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
-            }
-        }
-
-        System.out.println();
 
         for (int[] ints : array) {
             for (int anInt : ints) {
@@ -173,27 +206,10 @@ public class Homework {
         System.out.print("Sum of array values: " + result);
     }
 
-    public static void getArrayDiagonal(int firstLength, int secondLength) {
-        int[][] array = new int[firstLength][secondLength];
-        int result = 0;
+    public static void getArrayDiagonal(int[][] array) {
 
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = rangeRandom();
-            }
-        }
-
-        System.out.print("Created int array: ");
-
-        for (int[] ints : array) {
-            System.out.println();
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
-            }
-        }
-
-        System.out.println();
-
+        System.out.println("\n");
+        System.out.print("Diagonals of the array: ");
 
         for (int i = 0; i < array.length; i++) {
             System.out.println();
@@ -206,4 +222,54 @@ public class Homework {
             }
         }
     }
+
+    public static int[][] getMatrix(int[][] firstArray, int[][] secondArray) {
+
+        if (firstArray.length == secondArray.length) {
+
+            int[][] matrixArray = new int[firstArray.length][firstArray.length];
+
+            for (int i = 0; i < firstArray.length; i++) {
+                for (int j = 0; j < firstArray[i].length; j++) {
+                    for (int k = 0; k < firstArray.length; k++) {
+                        matrixArray[i][j] += firstArray[i][k] * secondArray[k][j];
+
+                    }
+                }
+            }
+
+            System.out.print("Matrix: ");
+            displayArray(matrixArray);
+            return matrixArray;
+
+        } else if ((firstArray.length == secondArray[0].length) && (firstArray.length > secondArray.length)) {
+
+            System.out.println("2");
+            int[][] matrixArr = new int[firstArray.length][firstArray.length];
+
+            for (int i = 0; i < secondArray.length; i++) {  //3
+                for (int j = 0; j < firstArray.length; j++) {
+                    for (int k = 0; k < firstArray.length; k++) {
+                        matrixArr[j][k] += firstArray[k][i] * secondArray[i][k];
+
+                    }
+                }
+            }
+            System.out.print("Matrix: ");
+            displayArray(matrixArr);
+            return matrixArr;
+
+        } else if ((firstArray.length == secondArray[0].length)) {
+            System.out.println("3");
+            int[][] matrixAr = new int[secondArray[0].length][secondArray[0].length];
+            return matrixAr;
+        } else {
+
+            System.out.println("The number of columns of the first matrix " +
+                    "must be equal to the number of rows of the second matrix." +
+                    " Try again.");
+            return getMatrix(createArray(), createArray());
+        }
+    }
+
 }
