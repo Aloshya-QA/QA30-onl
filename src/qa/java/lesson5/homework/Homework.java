@@ -6,11 +6,24 @@ import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
 
-//        increaseArrayValues(createIntArray());
-//        getChessBoard(8, 8);
-//        getArraySum(createArray());
-//        getArrayDiagonal(createArray());
-        getMatrix(createArray(), createArray());
+        increaseArrayValues(createIntArray());
+        getChessBoard(8, 8);
+
+//        getMatrix(createArray(), createArray());
+        getMatrix(
+                new int[][]{{1, 0, 0, 0},
+                        {0, 1, 0, 0},
+                        {0, 0, 0, 0}},
+
+                new int[][]{{1, 2, 3},
+                        {1, 1, 1},
+                        {0, 0, 0},
+                        {2, 1, 0}}
+        );
+
+        getArraySum(createArray());
+        getArrayDiagonal(createArray());
+
 
 
     }
@@ -244,13 +257,15 @@ public class Homework {
 
         } else if ((firstArray.length == secondArray[0].length) && (firstArray.length > secondArray.length)) {
 
-            System.out.println("2");
             int[][] matrixArr = new int[firstArray.length][firstArray.length];
 
-            for (int i = 0; i < secondArray.length; i++) {  //3
-                for (int j = 0; j < firstArray.length; j++) {
+            firstArray = expandArray(firstArray, firstArray.length);
+            secondArray = expandArray(secondArray, firstArray.length);
+
+            for (int i = 0; i < firstArray.length; i++) {
+                for (int j = 0; j < firstArray[i].length; j++) {
                     for (int k = 0; k < firstArray.length; k++) {
-                        matrixArr[j][k] += firstArray[k][i] * secondArray[i][k];
+                        matrixArr[i][j] += firstArray[i][k] * secondArray[k][j];
 
                     }
                 }
@@ -259,10 +274,29 @@ public class Homework {
             displayArray(matrixArr);
             return matrixArr;
 
-        } else if ((firstArray.length == secondArray[0].length)) {
-            System.out.println("3");
-            int[][] matrixAr = new int[secondArray[0].length][secondArray[0].length];
-            return matrixAr;
+        } else if ((firstArray[0].length == secondArray.length)) {
+
+            int length = firstArray.length;
+
+            int[][] matrixAr = new int[secondArray.length][secondArray.length];
+
+            firstArray = expandArray(firstArray, secondArray.length);
+            secondArray = expandArray(secondArray, secondArray.length);
+
+            for (int i = 0; i < firstArray.length; i++) {
+                for (int j = 0; j < firstArray[i].length; j++) {
+                    for (int k = 0; k < firstArray.length; k++) {
+                        matrixAr[i][j] += firstArray[i][k] * secondArray[k][j];
+
+                    }
+                }
+            }
+
+            System.out.print("Matrix: ");
+            displayArray(compressArray(matrixAr, length));
+
+            return compressArray(matrixAr, length);
+
         } else {
 
             System.out.println("The number of columns of the first matrix " +
@@ -272,4 +306,38 @@ public class Homework {
         }
     }
 
+    public static int[][] expandArray(int[][] array, int length) {
+
+        int[][] newArray = new int[length][length];
+
+        if (array.length == length) {
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[0].length; j++) {
+                    newArray[i][j] = array[i][j];
+                }
+
+            }
+        } else {
+            for (int i = 0; i < array[0].length; i++) {
+                for (int j = 0; j < array.length; j++) {
+                    newArray[j][i] = array[j][i];
+                }
+            }
+        }
+        return newArray;
+    }
+
+    public static int[][] compressArray(int[][] array, int length) {
+
+        int[][] newArray = new int[length][length];
+        for (int i = 0; i < newArray.length; i++) {
+            for (int j = 0; j < newArray.length; j++) {
+                newArray[i][j] = array[i][j];
+
+            }
+
+        }
+
+        return newArray;
+    }
 }
