@@ -9,6 +9,8 @@ public class ComputerRunner {
                 new Ssd(512, "Samsung", "Internal"),
                 new Ram(16, "Samsung"));
 
+        getInfo(hp, asus, gigabyte);
+
     }
 
     public static void getInfo(Computer... computers) {

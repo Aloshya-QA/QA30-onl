@@ -9,6 +9,8 @@ public class Computer {
     public Computer(String model, int cost) {
         this.model = model;
         this.cost = cost;
+        this.ssd = new Ssd();
+        this.ram = new Ram();
     }
 
     public Computer(String model, int cost, Ssd ssd, Ram ram) {
@@ -23,6 +25,7 @@ public class Computer {
         System.out.println("Cost: " + this.cost + "$");
         System.out.println("SSD: " + this.ssd.getName() + ", " + this.ssd.getVolume() + ";");
         System.out.println("RAM: " + this.ram.getName() + ", " + this.ram.getVolume() + ";");
+        System.out.println();
 
     }
 }
