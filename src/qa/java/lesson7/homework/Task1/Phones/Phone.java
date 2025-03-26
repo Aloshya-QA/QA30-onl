@@ -1,4 +1,4 @@
-package qa.java.lesson7.homework.Task1;
+package qa.java.lesson7.homework.Task1.Phones;
 
 public abstract class Phone {
     private long number;

@@ -1,8 +1,9 @@
 package qa.java.lesson7.homework.Task1;
 
-import qa.java.lesson7.homework.Task1.phones.Iphone;
-import qa.java.lesson7.homework.Task1.phones.Pixel;
-import qa.java.lesson7.homework.Task1.phones.Samsung;
+import qa.java.lesson7.homework.Task1.Phones.Iphone;
+import qa.java.lesson7.homework.Task1.Phones.Phone;
+import qa.java.lesson7.homework.Task1.Phones.Pixel;
+import qa.java.lesson7.homework.Task1.Phones.Samsung;
 
 public class PhoneRunner {
     public static void main(String[] args) {

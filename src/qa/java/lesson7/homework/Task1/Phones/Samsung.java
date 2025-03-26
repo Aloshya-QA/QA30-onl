@@ -1,9 +1,7 @@
-package qa.java.lesson7.homework.Task1.phones;
+package qa.java.lesson7.homework.Task1.Phones;
 
-import qa.java.lesson7.homework.Task1.Phone;
-
-public class Iphone extends Phone {
-    public Iphone(long number, double weight, String model) {
+public class Samsung extends Phone {
+    public Samsung(long number, double weight, String model) {
         super(number, weight, model);
     }
 

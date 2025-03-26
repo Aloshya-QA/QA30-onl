@@ -1,6 +1,4 @@
-package qa.java.lesson7.homework.Task1.phones;
-
-import qa.java.lesson7.homework.Task1.Phone;
+package qa.java.lesson7.homework.Task1.Phones;
 
 public class Pixel extends Phone {
     public Pixel(long number, double weight, String model) {
