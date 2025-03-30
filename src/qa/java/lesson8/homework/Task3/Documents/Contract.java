@@ -5,7 +5,7 @@ public class Contract extends Document {
     private final int amountOfGoods;
     private final String type;
 
-    public Contract(int docNumber, int year, int month, int day, int amountOfGoods, String type) {
+    public Contract(String docNumber, int year, int month, int day, int amountOfGoods, String type) {
         super(docNumber, year, month, day);
         this.amountOfGoods = amountOfGoods;
         this.type = type;
