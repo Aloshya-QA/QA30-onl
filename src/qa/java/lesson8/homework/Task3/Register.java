@@ -8,13 +8,17 @@ public class Register {
     private final Document[] docDatabase = new Document[10];
 
     void saveDocument(Document... documents) {
-        for (Document document : documents) {
-            for (int i = 0; i < documents.length; i++) {
-                if (this.docDatabase[i] == null) {
-                    this.docDatabase[i] = document;
-                    break;
+        try {
+            for (Document document : documents) {
+                for (int i = 0; i < documents.length; i++) {
+                    if (this.docDatabase[i] == null) {
+                        this.docDatabase[i] = document;
+                        break;
+                    }
                 }
             }
+        } catch (Exception e) {
+            System.out.println("Database is full!");
         }
     }
 

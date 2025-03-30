@@ -5,7 +5,7 @@ public class Invoice extends Document {
     private final int code;
     private final long sum;
 
-    public Invoice(int docNumber, int year, int month, int day, int code, long sum) {
+    public Invoice(String docNumber, int year, int month, int day, int code, long sum) {
         super(docNumber, year, month, day);
         this.code = code;
         this.sum = sum;

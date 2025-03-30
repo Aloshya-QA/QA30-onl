@@ -7,7 +7,7 @@ public class WorkContract extends Document {
     private final LocalDate endContract;
     private final String name;
 
-    public WorkContract(int docNumber, int year, int month, int day, int endYear, int endMonth, int endDay, String name) {
+    public WorkContract(String docNumber, int year, int month, int day, int endYear, int endMonth, int endDay, String name) {
         super(docNumber, year, month, day);
         this.endContract = LocalDate.of(endYear, endMonth, endDay);
         this.name = name;
