@@ -1,4 +1,4 @@
-package qa.java.lesson10.Task1;
+package qa.java.lesson10.homework.Task1;
 
 public class StringMethods {
     public static void main(String[] args) {

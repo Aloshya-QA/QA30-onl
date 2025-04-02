@@ -1,4 +1,4 @@
-package qa.java.lesson10.Task5;
+package qa.java.lesson10.homework.Task5;
 
 public class FormatString {
     public static void main(String[] args) {

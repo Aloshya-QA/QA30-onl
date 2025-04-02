@@ -1,4 +1,4 @@
-package qa.java.lesson10.Task4;
+package qa.java.lesson10.homework.Task4;
 
 import java.util.Scanner;
 

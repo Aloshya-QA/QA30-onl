@@ -1,4 +1,4 @@
-package qa.java.lesson10.Task2;
+package qa.java.lesson10.homework.Task2;
 
 public class ShortOrLongWord {
     public static void main(String[] args) {
