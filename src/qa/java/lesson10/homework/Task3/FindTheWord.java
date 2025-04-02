@@ -10,7 +10,7 @@ public class FindTheWord {
         String[] newStr = str.split(" ");
 
         int prevCounter = 0;
-        int nextCounter = 100;
+        int nextCounter = Integer.MAX_VALUE;
         int wordIndex = 0;
 
         for (int i = 0; i < newStr.length; i++) {
