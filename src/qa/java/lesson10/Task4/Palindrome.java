@@ -14,7 +14,12 @@ public class Palindrome {
         String[] arrayStr = str.toLowerCase().split(" ");
 
         System.out.print("Enter the word number in the line: ");
-        int index = new Scanner(System.in).nextInt();
+        int index = new Scanner(System.in).nextInt() - 1;
+
+        if (index >= arrayStr.length) {
+            System.out.println("There are " + arrayStr.length + " words in a line!");
+            return;
+        }
 
         StringBuilder newStr = new StringBuilder(arrayStr[index]);
 
