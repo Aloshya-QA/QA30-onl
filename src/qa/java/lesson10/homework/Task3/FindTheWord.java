@@ -3,7 +3,7 @@ package qa.java.lesson10.homework.Task3;
 public class FindTheWord {
     public static void main(String[] args) {
 
-        findTheWord("ffaff bf bbf bf abc aa");
+        findTheWord("ffaff bf bbf bf abc aaa");
     }
 
     public static void findTheWord(String str) {
